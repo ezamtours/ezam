@@ -1,0 +1,21 @@
+/* EZAM V8.26 — true high-resolution originals, self-hosted at build time.
+   This does NOT upscale blurry local image files. */
+.hero-v7-slide {
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  object-position:center!important;
+  transform:none!important;
+  filter:none!important;
+  image-rendering:auto!important;
+  backface-visibility:visible!important;
+}
+.hero-v7-slide:nth-child(1){object-position:50% 50%!important}
+.hero-v7-slide:nth-child(2){object-position:60% 50%!important}
+.hero-v7-slide:nth-child(3){object-position:50% 50%!important}
+.hero-v7-slide:nth-child(4){object-position:54% 50%!important}
+.hero-v7-slide:nth-child(5){object-position:55% 50%!important}
+.hero-v7-slide:not(.is-active){opacity:0!important;pointer-events:none}
+.hero-v7-slide.is-active{opacity:1!important}
+@media(max-width:700px){.hero-v7-slide{object-position:62% center!important}}
