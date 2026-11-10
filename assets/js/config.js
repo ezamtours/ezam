@@ -1,13 +1,10 @@
-// EZAM production connection settings.
-// Fill these two values after creating the dedicated EZAM Supabase project.
-// Never place a service_role / secret key in this file.
+
 window.EZAM_CONFIG = {
-  supabaseUrl: "",
-  supabasePublishableKey: "",
+  supabaseUrl: "https://vysrrbypbuubwquzxjuj.supabase.co",
+  supabasePublishableKey: "sb_publishable_Z6hnBjRCL-2pth3bLSQpbQ_Dc5Rgygx",
   ownerEmail: "ezamtourstravelservices01@gmail.com",
   demoMode: false,
 
-  // These are managed from the dashboard once the backend is connected.
   socialDefaults: {
     facebook: "",
     instagram: "",
