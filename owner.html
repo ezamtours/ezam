@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="#082f45" name="theme-color"/>
+<title>EZAM Admin Workspace</title>
+<link href="assets/images/favicon.png" rel="icon" type="image/png"/>
+<link href="assets/css/admin.css" rel="stylesheet"/>
+</head>
+<body class="admin-page">
+<div class="admin-shell" hidden="" id="adminShell">
+<aside class="admin-sidebar">
+<a class="admin-brand" href="index.html"><img alt="EZAM Tours &amp; Travel Services" src="assets/images/ezam-official-2026-on-light.png"/><span class="admin-brand-tag">Owner &amp; Admin Workspace</span></a>
+<nav aria-label="Admin navigation" class="admin-nav">
+<button class="active" data-view="overview"><span class="nav-icon"><svg aria-hidden="true" viewbox="0 0 24 24"><rect height="7" rx="1" width="7" x="3" y="3"></rect><rect height="7" rx="1" width="7" x="14" y="3"></rect><rect height="7" rx="1" width="7" x="3" y="14"></rect><rect height="7" rx="1" width="7" x="14" y="14"></rect></svg></span><span>Overview</span></button>
+<button data-view="leads"><span class="nav-icon"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></span><span>Leads</span><strong class="nav-count" id="navLeadCount">0</strong></button><button data-view="followups" type="button"><span class="nav-icon"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l4 2"></path><path d="M18.5 18.5 21 21"></path></svg></span><span>Follow-ups</span></button><button data-view="bookings" type="button"><span class="nav-icon"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24"><rect height="16" rx="2" width="18" x="3" y="5"></rect><path d="M3 10h18M8 3v4m8-4v4"></path><path d="m9 16 2 2 4-4"></path></svg></span><span>Bookings</span></button><button data-view="travelers" type="button"><span class="nav-icon"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24"><circle cx="9" cy="8" r="3"></circle><path d="M3 20v-2a6 6 0 0 1 12 0v2M17 11a3 3 0 0 0 0-6M18 14a5 5 0 0 1 4 5v1"></path></svg></span><span>Travelers</span></button>
+<button data-owner-only="" data-view="packages"><span class="nav-icon"><svg aria-hidden="true" viewbox="0 0 24 24"><rect height="13" rx="2" width="18" x="3" y="7"></rect><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><path d="M3 12h18"></path><path d="M10 12v2h4v-2"></path></svg></span><span>Packages</span></button>
+<button data-owner-only="" data-view="admins"><span class="nav-icon"><svg aria-hidden="true" viewbox="0 0 24 24"><circle cx="12" cy="8" r="4"></circle><path d="M4 21a8 8 0 0 1 16 0"></path><path d="M19 3v4"></path><path d="M17 5h4"></path></svg></span><span>Admins</span></button>
+<button data-owner-only="" data-view="reports"><span class="nav-icon"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M4 19V9"></path><path d="M10 19V5"></path><path d="M16 19v-7"></path><path d="M22 19V3"></path><path d="M2 21h22"></path></svg></span><span>Reports &amp; Insights</span></button><button data-owner-only="" data-view="settings"><span class="nav-icon"><svg aria-hidden="true" viewbox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06-2.83 2.83-.06-.06A1.7 1.7 0 0 0 15 19.4a1.7 1.7 0 0 0-1 .6 1.7 1.7 0 0 0-.4 1.1V21H9.6v-.1A1.7 1.7 0 0 0 8.6 19.4a1.7 1.7 0 0 0-1.88.34l-.06.06-2.83-2.83.06-.06A1.7 1.7 0 0 0 4.6 15a1.7 1.7 0 0 0-.6-1 1.7 1.7 0 0 0-1.1-.4H3V9.6h.1A1.7 1.7 0 0 0 4.6 8.6a1.7 1.7 0 0 0-.34-1.88l-.06-.06 2.83-2.83.06.06A1.7 1.7 0 0 0 9 4.6a1.7 1.7 0 0 0 1-.6 1.7 1.7 0 0 0 .4-1.1V3h4v.1A1.7 1.7 0 0 0 15.4 4.6a1.7 1.7 0 0 0 1.88-.34l.06-.06 2.83 2.83-.06.06A1.7 1.7 0 0 0 19.4 9c.2.4.5.7.9 1 .3.2.7.3 1.1.3h.1v4h-.1c-.4 0-.8.1-1.1.3-.4.3-.7.6-.9 1Z"></path></svg></span><span>Settings</span></button>
+</nav>
+<div class="admin-sidebar-foot"><span class="sidebar-quick-label">Quick Links</span>
+<a href="index.html">Open public website ↗</a>
+<button id="logoutBtn" type="button">Log out</button>
+</div>
+</aside>
+<main class="admin-main">
+<header class="admin-topbar"><a class="mobile-topbar-logo" href="index.html"><img alt="EZAM" src="assets/images/ezam-official-2026-on-light.png"/></a>
+<div>
+<span class="topbar-kicker" id="topbarKicker">EZAM Workspace</span>
+<h1 id="viewTitle">Overview</h1>
+</div>
+<button aria-label="View traveler inquiries" class="admin-notification" data-jump="leads" title="View traveler inquiries" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"></path><path d="M13.7 21a2 2 0 0 1-3.4 0"></path></svg><i></i></button>
+<button aria-label="Switch appearance" class="theme-toggle" id="themeToggle" title="Switch appearance" type="button">
+<span aria-hidden="true" class="theme-icon theme-icon-sun">
+<svg fill="none" viewbox="0 0 24 24">
+<circle cx="12" cy="12" r="4"></circle>
+<path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.66 6.34l1.41-1.41"></path>
+</svg>
+</span>
+<span aria-hidden="true" class="theme-icon theme-icon-moon">
+<svg fill="none" viewbox="0 0 24 24">
+<path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5 8.5 8.5 0 1 0 20.5 14.5Z"></path>
+</svg>
+</span>
+</button>
+<span class="workspace-status" id="workspaceStatus" role="status">EZAM Workspace</span><div class="admin-user">
+<div class="admin-user-copy"><strong id="currentUserName">Administrator</strong><span id="currentUserRole">Admin</span></div>
+<div class="admin-avatar" id="adminAvatar">A</div>
+</div>
+<button aria-label="Log out" class="mobile-logout-btn" id="mobileLogoutBtn" type="button">Log out</button></header>
+<div class="admin-content">
+<!-- Overview -->
+<section class="admin-view active" id="view-overview">
+<section class="overview-hero">
+<div class="overview-hero-shade"></div>
+<div class="overview-hero-copy">
+<span class="overview-kicker">EZAM  /  OPERATIONS</span>
+<h2 id="welcomeHeading">Welcome back, <em>Iza.</em></h2>
+<p>Here’s what needs your attention across inquiries, packages, and the team.</p>
+<div class="overview-actions">
+<button class="mock-action primary" id="overviewAddLead" type="button"><svg aria-hidden="true" class="ui-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14"></path></svg>Add Lead</button>
+<button class="mock-action" data-quick-action="package" type="button"><svg aria-hidden="true" class="ui-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14"></path></svg>Create Package</button>
+<button class="mock-action" data-quick-action="export-leads" type="button"><svg aria-hidden="true" class="ui-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" viewbox="0 0 24 24"><path d="M12 16V3m0 0L7 8m5-5 5 5"></path><path d="M4 16v4h16v-4"></path></svg>Export Leads</button>
+<button class="mock-action" data-jump="admins" data-owner-only="" type="button"><svg aria-hidden="true" class="ui-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" viewbox="0 0 24 24"><circle cx="9" cy="7" r="3"></circle><path d="M3 20v-2a6 6 0 0 1 12 0v2M16 4a3 3 0 0 1 0 6M17 15a5 5 0 0 1 4 5"></path></svg>Team &amp; Access</button>
+</div>
+</div>
+<div aria-hidden="true" class="overview-flight-path"><svg aria-hidden="true" class="ui-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" viewbox="0 0 24 24"><path d="M18 2 9.5 10.5 3 9l-1 2.5 5.5 3L8 20l2.5-1 1.5-6.5L21 4c1.5-1.5-.5-3.5-3-2Z"></path></svg></div>
+</section>
+<div class="mock-kpi-grid">
+<article class="mock-kpi orange"><div class="kpi-icon"><svg viewbox="0 0 24 24"><circle cx="9" cy="8" r="3"></circle><circle cx="17" cy="9" r="2.5"></circle><path d="M3 20a6 6 0 0 1 12 0"></path><path d="M13 20a5 5 0 0 1 9 0"></path></svg></div><div><span>Total Leads</span><strong id="metricTotal">0</strong><small>Visible inquiry records</small></div></article>
+<article class="mock-kpi green"><div class="kpi-icon"><svg viewbox="0 0 24 24"><path d="M22 2 9.5 14.5"></path><path d="m22 2-7 20-4-9-9-4Z"></path></svg></div><div><span>New Leads</span><strong id="metricNew">0</strong><small>awaiting first response</small></div></article>
+<article class="mock-kpi red"><div class="kpi-icon"><svg viewbox="0 0 24 24"><path d="M12 22c4 0 7-3 7-7 0-4-3-6-3-10-2 1-3 3-4 5-1-3-3-5-5-6 0 3-2 5-2 9 0 5 3 9 7 9Z"></path></svg></div><div><span>Hot Leads</span><strong id="metricHot">0</strong><small>Needs immediate follow-up</small></div></article>
+<article class="mock-kpi green"><div class="kpi-icon"><svg viewbox="0 0 24 24"><rect height="13" rx="2" width="18" x="3" y="7"></rect><path d="M8 7V5h8v2"></path><path d="M3 12h18"></path></svg></div><div><span>Booked Trips</span><strong id="metricBooked">0</strong><small>converted inquiries</small></div></article>
+<article class="mock-kpi blue"><div class="kpi-icon"><svg viewbox="0 0 24 24"><path d="m12 2 9 5-9 5-9-5Z"></path><path d="m3 12 9 5 9-5"></path><path d="m3 17 9 5 9-5"></path></svg></div><div><span>Active Packages</span><strong id="metricPackages">0</strong><small>published journeys</small></div></article>
+</div><section aria-labelledby="worldTimesHeading" class="ezam-world-times">
+<div class="ezam-times-heading">
+<div class="ezam-times-heading-copy"><span class="ezam-times-icon"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.65" viewbox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c3 3 4.5 6 4.5 9s-1.5 6-4.5 9c-3-3-4.5-6-4.5-9S9 6 12 3Z"></path></svg></span><div><h3 id="worldTimesHeading">International time</h3><p>Local time at EZAM destinations and partner cities</p></div></div>
+<div class="ezam-times-controls"><span class="ezam-live-indicator"><span class="ezam-live-dot"></span>Live clocks</span><div aria-label="Clock display format" class="clock-format-switch" role="group"><button aria-pressed="true" class="active" data-clock-format="12" type="button">12h</button><button aria-pressed="false" data-clock-format="24" type="button">24h</button></div></div>
+</div>
+<div aria-label="World clock times" class="ezam-clocks-scroll" role="region" tabindex="0">
+<div class="ezam-clocks-track"><article aria-label="Current time in Manila, Philippines" class="ezam-clock-card is-home" data-clock-zone="Asia/Manila">
+<div class="ezam-clock-place"><svg aria-hidden="true" class="world-clock-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3.5 2"></path></svg><span class="ezam-clock-city">Manila</span><span class="ezam-clock-home">HOME</span></div>
+<div class="ezam-clock-country">Philippines</div>
+<div class="ezam-clock-face"><time data-clock-time="">--:--:--</time><span data-clock-period="">--</span></div>
+<div class="ezam-clock-bottom"><span data-clock-date="">—</span><span data-clock-offset="">—</span></div>
+</article><article aria-label="Current time in Tokyo, Japan" class="ezam-clock-card" data-clock-zone="Asia/Tokyo">
+<div class="ezam-clock-place"><svg aria-hidden="true" class="world-clock-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3.5 2"></path></svg><span class="ezam-clock-city">Tokyo</span></div>
+<div class="ezam-clock-country">Japan</div>
+<div class="ezam-clock-face"><time data-clock-time="">--:--:--</time><span data-clock-period="">--</span></div>
+<div class="ezam-clock-bottom"><span data-clock-date="">—</span><span data-clock-offset="">—</span></div>
+</article><article aria-label="Current time in Seoul, South Korea" class="ezam-clock-card" data-clock-zone="Asia/Seoul">
+<div class="ezam-clock-place"><svg aria-hidden="true" class="world-clock-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3.5 2"></path></svg><span class="ezam-clock-city">Seoul</span></div>
+<div class="ezam-clock-country">South Korea</div>
+<div class="ezam-clock-face"><time data-clock-time="">--:--:--</time><span data-clock-period="">--</span></div>
+<div class="ezam-clock-bottom"><span data-clock-date="">—</span><span data-clock-offset="">—</span></div>
+</article><article aria-label="Current time in Singapore, Singapore" class="ezam-clock-card" data-clock-zone="Asia/Singapore">
+<div class="ezam-clock-place"><svg aria-hidden="true" class="world-clock-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3.5 2"></path></svg><span class="ezam-clock-city">Singapore</span></div>
+<div class="ezam-clock-country">Singapore</div>
+<div class="ezam-clock-face"><time data-clock-time="">--:--:--</time><span data-clock-period="">--</span></div>
+<div class="ezam-clock-bottom"><span data-clock-date="">—</span><span data-clock-offset="">—</span></div>
+</article><article aria-label="Current time in Bali, Indonesia" class="ezam-clock-card" data-clock-zone="Asia/Makassar">
+<div class="ezam-clock-place"><svg aria-hidden="true" class="world-clock-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3.5 2"></path></svg><span class="ezam-clock-city">Bali</span></div>
+<div class="ezam-clock-country">Indonesia</div>
+<div class="ezam-clock-face"><time data-clock-time="">--:--:--</time><span data-clock-period="">--</span></div>
+<div class="ezam-clock-bottom"><span data-clock-date="">—</span><span data-clock-offset="">—</span></div>
+</article><article aria-label="Current time in Dubai, UAE" class="ezam-clock-card" data-clock-zone="Asia/Dubai">
+<div class="ezam-clock-place"><svg aria-hidden="true" class="world-clock-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3.5 2"></path></svg><span class="ezam-clock-city">Dubai</span></div>
+<div class="ezam-clock-country">UAE</div>
+<div class="ezam-clock-face"><time data-clock-time="">--:--:--</time><span data-clock-period="">--</span></div>
+<div class="ezam-clock-bottom"><span data-clock-date="">—</span><span data-clock-offset="">—</span></div>
+</article><article aria-label="Current time in London, United Kingdom" class="ezam-clock-card" data-clock-zone="Europe/London">
+<div class="ezam-clock-place"><svg aria-hidden="true" class="world-clock-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3.5 2"></path></svg><span class="ezam-clock-city">London</span></div>
+<div class="ezam-clock-country">United Kingdom</div>
+<div class="ezam-clock-face"><time data-clock-time="">--:--:--</time><span data-clock-period="">--</span></div>
+<div class="ezam-clock-bottom"><span data-clock-date="">—</span><span data-clock-offset="">—</span></div>
+</article><article aria-label="Current time in New York, United States" class="ezam-clock-card" data-clock-zone="America/New_York">
+<div class="ezam-clock-place"><svg aria-hidden="true" class="world-clock-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3.5 2"></path></svg><span class="ezam-clock-city">New York</span></div>
+<div class="ezam-clock-country">United States</div>
+<div class="ezam-clock-face"><time data-clock-time="">--:--:--</time><span data-clock-period="">--</span></div>
+<div class="ezam-clock-bottom"><span data-clock-date="">—</span><span data-clock-offset="">—</span></div>
+</article></div></div></section>
+<div class="mock-overview-grid">
+<article class="mock-white-panel pipeline-panel">
+<div class="mock-panel-head"><div><span class="panel-icon orange"><svg aria-hidden="true" class="ui-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" viewbox="0 0 24 24"><path d="M4 20V4M4 20h16M8 16v-4M13 16V8M18 16v-7"></path></svg></span><div><h3>Lead Pipeline</h3><p>Where inquiries stand right now.</p></div></div><button class="mock-link" data-jump="leads">Open database →</button></div>
+<div class="pipeline-bars mock-pipeline" id="pipelineBars"></div>
+</article>
+<article class="mock-white-panel source-panel">
+<div class="mock-panel-head"><div><span class="panel-icon green"><svg aria-hidden="true" class="ui-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" viewbox="0 0 24 24"><circle cx="9" cy="7" r="3"></circle><path d="M3 20v-2a6 6 0 0 1 12 0v2M16 4a3 3 0 0 1 0 6M17 15a5 5 0 0 1 4 5"></path></svg></span><div><h3>Leads by Source</h3><p>How travelers reach EZAM.</p></div></div></div>
+<div class="source-list mock-source-chart" id="sourceBreakdown"></div>
+</article>
+<article class="mock-white-panel performance-panel">
+<div class="mock-panel-head"><div><span class="panel-icon orange"><svg aria-hidden="true" class="ui-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" viewbox="0 0 24 24"><rect height="7" rx="1" width="7" x="3" y="3"></rect><rect height="7" rx="1" width="7" x="14" y="3"></rect><rect height="7" rx="1" width="7" x="3" y="14"></rect><rect height="7" rx="1" width="7" x="14" y="14"></rect></svg></span><div><h3>Operations Snapshot</h3><p>Current lead and booking totals.</p></div></div></div>
+<div class="performance-list" id="monthPerformance"></div>
+</article>
+</div>
+<div class="overview-secondary" data-owner-only="">
+<article class="secondary-card"><div class="secondary-head"><span>Recent Activity</span><button data-jump="leads">View all →</button></div><div class="recent-leads" id="recentLeads"></div></article>
+<article class="secondary-card"><div class="secondary-head"><span>Team Workload</span><button data-jump="admins">Manage →</button></div><div class="team-workload" id="teamWorkload"></div></article>
+<article class="secondary-card"><div class="secondary-head"><span>Needs Attention</span><button data-jump="leads">Review →</button></div><div class="attention-list" id="attentionList"></div></article>
+<article class="secondary-card"><div class="secondary-head"><span>Catalog Health</span><button data-jump="packages">Manage →</button></div><div class="catalog-snapshot" id="catalogSnapshot"></div></article>
+</div>
+<span hidden="" id="metricUnassigned">0</span>
+</section>
+<!-- Leads -->
+<section class="admin-view" id="view-leads">
+<div class="view-head">
+<div><span class="eyebrow">CRM</span><h2>Lead database</h2><p id="leadScopeText">Every inquiry in one searchable place.</p></div>
+<button class="admin-btn primary" id="addLeadBtn" type="button">+ Add lead</button>
+</div>
+<div class="lead-toolbar">
+<label class="search-control"><span>Search</span><input id="leadSearch" placeholder="Name, email, destination, message..."/></label>
+<label><span>Stage</span><select id="stageFilter"><option value="">All stages</option></select></label>
+<label><span>Priority</span><select id="temperatureFilter"><option value="">All priorities</option><option>Hot</option><option>Warm</option><option>Cold</option></select></label>
+<label><span>Source</span><select id="sourceFilter"><option value="">All sources</option></select></label>
+<label data-owner-only=""><span>Assigned to</span><select id="assigneeFilter"><option value="">All admins</option><option value="unassigned">Unassigned</option></select></label>
+</div>
+<div class="database-card">
+<div class="database-head">
+<span>Traveler</span><span>Journey</span><span>Source</span><span>Priority</span><span>Stage</span><span data-owner-only="">Assigned</span>
+</div>
+<div class="lead-table" id="leadTable"></div>
+</div>
+</section><section class="admin-view" id="view-followups">
+<div class="view-head ops-head"><div><span class="eyebrow">FOLLOW-UP DESK</span><h2>Conversations that need attention</h2><p>Prioritize new and open inquiries. Updating a lead here also updates the central lead database.</p></div><button class="admin-btn primary" data-ops-new-lead="" type="button">Add inquiry</button></div>
+<div class="ops-stats" id="followupStats"></div>
+<div class="ops-toolbar"><label><span>Search inquiries</span><input id="followupSearch" placeholder="Traveler, trip or destination" type="search"/></label><label><span>Priority</span><select id="followupPriority"><option value="">All priorities</option><option>Hot</option><option>Warm</option><option>Cold</option></select></label></div>
+<div aria-live="polite" class="ops-list" id="followupList"></div>
+</section><section class="admin-view" id="view-bookings">
+<div class="view-head ops-head"><div><span class="eyebrow">BOOKING WORKSPACE</span><h2>Booked travel inquiries</h2><p>Review converted inquiries and traveler contact details. This is not a payment or ticketing system.</p></div><button class="admin-btn ghost" id="exportBookings" type="button">Export bookings CSV</button></div>
+<div class="ops-stats" id="bookingsStats"></div>
+<div class="ops-toolbar"><label><span>Search bookings</span><input id="bookingSearch" placeholder="Traveler, trip or contact" type="search"/></label></div>
+<div aria-live="polite" class="ops-list" id="bookingList"></div>
+</section><section class="admin-view" id="view-travelers">
+<div class="view-head ops-head"><div><span class="eyebrow">CUSTOMER DIRECTORY</span><h2>Traveler relationships</h2><p>A searchable contact directory derived from accessible lead records; no duplicate customer records created.</p></div><button class="admin-btn ghost" id="exportTravelers" type="button">Export contacts CSV</button></div>
+<div class="ops-stats" id="travelerStats"></div>
+<div class="ops-toolbar"><label><span>Find a traveler</span><input id="travelerSearch" placeholder="Name, email or phone" type="search"/></label></div>
+<div aria-live="polite" class="ops-list" id="travelerList"></div>
+</section>
+<!-- Packages -->
+<section class="admin-view" data-owner-only="" id="view-packages">
+<div class="mock-view-head packages-head">
+<div><span class="eyebrow">WEBSITE CATALOG</span><h2>Tour Packages</h2><p>Create, manage, and publish travel packages for the EZAM website.</p></div>
+<button class="mock-action primary" id="catalogCreatePackage" type="button"><svg aria-hidden="true" class="ui-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14"></path></svg> Create Package</button>
+</div>
+<div class="package-summary-strip mock-summary-strip">
+<div><span class="summary-icon blue"><svg aria-hidden="true" class="ui-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" viewbox="0 0 24 24"><path d="M7 3h7l4 4v14H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z"></path><path d="M14 3v5h5M9 13h6M9 17h6"></path></svg></span><small>All Packages</small><strong id="pkgMetricTotal">0</strong></div>
+<div><span class="summary-icon green"><svg aria-hidden="true" class="ui-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" viewbox="0 0 24 24"><path d="m5 12 4 4L19 6"></path></svg></span><small>Published</small><strong id="pkgMetricPublished">0</strong></div>
+<div><span class="summary-icon slate"><svg aria-hidden="true" class="ui-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" viewbox="0 0 24 24"><rect height="7" rx="1" width="7" x="3" y="3"></rect><rect height="7" rx="1" width="7" x="14" y="3"></rect><rect height="7" rx="1" width="7" x="3" y="14"></rect><rect height="7" rx="1" width="7" x="14" y="14"></rect></svg></span><small>Drafts</small><strong id="pkgMetricDraft">0</strong></div>
+<div><span class="summary-icon gold"><svg aria-hidden="true" class="ui-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" viewbox="0 0 24 24"><path d="m12 2 3.1 6.2 6.9 1-5 4.9 1.2 6.9L12 17.8 5.8 21l1.2-6.9-5-4.9 6.9-1Z"></path></svg></span><small>Featured</small><strong id="pkgMetricFeatured">0</strong></div>
+</div>
+<div class="mock-package-toolbar">
+<label class="mock-search"><svg viewbox="0 0 24 24"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-4-4"></path></svg><input id="packageSearch" placeholder="Search packages (e.g., Japan, Bali, Palawan...)"/></label>
+<label><select id="packageStatusFilter"><option value="">All Statuses</option><option value="published">Published</option><option value="draft">Draft</option><option value="featured">Featured</option></select></label>
+<label><select id="packageCountryFilter"><option value="">All Countries</option></select></label>
+<button aria-label="Export packages CSV" class="export-mini" id="exportPackagesBtn" title="Export CSV" type="button"><svg aria-hidden="true" class="ui-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24"><path d="M12 4v12m-4-4 4 4 4-4"></path><path d="M5 17v3h14v-3"></path></svg></button>
+</div>
+<div class="package-admin-grid mock-package-grid" id="packageAdminGrid"></div>
+</section>
+<!-- Admins -->
+<section class="admin-view" data-owner-only="" id="view-admins">
+<div class="mock-view-head admins-head">
+<div><span class="eyebrow">ACCESS &amp; ASSIGNMENT</span><h2>Admin Accounts</h2><p>Manage admin users, access levels, and lead assignments.</p></div>
+<button class="mock-action primary" id="inviteAdminBtn" type="button"><svg aria-hidden="true" class="ui-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14"></path></svg> Invite Admin</button>
+</div>
+<div class="admin-metric-grid">
+<article><span class="admin-metric-icon blue"><svg aria-hidden="true" class="ui-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" viewbox="0 0 24 24"><circle cx="9" cy="7" r="3"></circle><path d="M3 20v-2a6 6 0 0 1 12 0v2M16 4a3 3 0 0 1 0 6M17 15a5 5 0 0 1 4 5"></path></svg></span><small>Total Admins</small><strong id="adminMetricTotal">0</strong></article>
+<article><span class="admin-metric-icon green"><svg aria-hidden="true" class="ui-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" viewbox="0 0 24 24"><path d="m12 2 8 4v6c0 5-3.6 8.3-8 10-4.4-1.7-8-5-8-10V6Z"></path><path d="m8.5 12 2.5 2.5 4.5-5"></path></svg></span><small>Active</small><strong id="adminMetricActive">0</strong></article>
+<article><span class="admin-metric-icon slate"><svg aria-hidden="true" class="ui-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" viewbox="0 0 24 24"><rect height="11" rx="2" width="14" x="5" y="10"></rect><path d="M8 10V7a4 4 0 1 1 8 0v3"></path></svg></span><small>Inactive</small><strong id="adminMetricInactive">0</strong></article>
+<article><span class="admin-metric-icon purple"><svg aria-hidden="true" class="ui-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" viewbox="0 0 24 24"><path d="M7 3h7l4 4v14H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z"></path><path d="M14 3v5h5M9 13h6M9 17h6"></path></svg></span><small>Total Assigned Leads</small><strong id="adminMetricAssigned">0</strong></article>
+</div>
+<div class="admin-filterbar">
+<label class="mock-search"><svg viewbox="0 0 24 24"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-4-4"></path></svg><input id="adminSearch" placeholder="Search admin (name or email)"/></label>
+<select id="adminStatusFilter"><option value="">All Statuses</option><option value="active">Active</option><option value="inactive">Inactive</option></select>
+<select id="adminAccessFilter"><option value="">Access Level</option><option value="admin">Admin</option></select>
+</div>
+<div class="mock-admin-table">
+<div class="mock-admin-head"><span>Admin</span><span>Email / Account</span><span>Access Level</span><span>Assigned Leads</span><span>Status</span><span>Actions</span></div>
+<div class="admin-list" id="adminList"></div>
+</div>
+</section>
+<!-- Settings -->
+<section class="admin-view" data-owner-only="" id="view-reports">
+<div class="view-head">
+<div><span class="eyebrow">Performance</span><h2>Reports &amp; insights</h2><p>A clear operational view of inquiries, conversions, sources, team workload, and packages.</p></div>
+<div class="view-head-actions"><label class="report-period-control"><span>Reporting period</span><select aria-label="Reporting period" id="reportPeriod"><option value="all">All time</option><option value="7">Last 7 days</option><option value="30">Last 30 days</option><option value="90">Last 90 days</option></select></label><button class="admin-btn ghost" id="exportLeadsBtn" type="button">Export leads CSV</button><button class="admin-btn primary" id="exportReportBtn" type="button">Export summary</button></div>
+</div>
+<div class="report-metric-grid">
+<article class="report-metric"><span>Booking conversion</span><strong id="reportConversion">0%</strong><small>Booked ÷ all visible leads</small></article>
+<article class="report-metric"><span>Active pipeline</span><strong id="reportPipeline">0</strong><small>Qualified, quoted, and follow-up</small></article>
+<article class="report-metric"><span>Published packages</span><strong id="reportPackages">0</strong><small>Live on the website</small></article>
+<article class="report-metric"><span>Top lead source</span><strong id="reportTopSource">—</strong><small id="reportTopSourceMeta">No data yet</small></article>
+</div>
+<div class="reports-grid">
+<article class="admin-panel"><div class="panel-head"><div><span class="panel-kicker">Source performance</span><h3>Where inquiries start</h3></div></div><div aria-label="Inquiries by source with booked share" class="report-table" id="sourcePerformance"></div></article>
+<article class="admin-panel"><div class="panel-head"><div><span class="panel-kicker">Team coverage</span><h3>Lead ownership</h3></div></div><div aria-label="Admin workload and unassigned leads" class="report-table" id="teamPerformance"></div></article>
+</div>
+<div class="reports-grid second-row">
+<article class="admin-panel"><div class="panel-head"><div><span class="panel-kicker">Catalog mix</span><h3>Package publishing</h3></div></div><div aria-label="Publishing status and active destinations" class="report-table" id="packagePerformance"></div></article>
+<article class="admin-panel"><div class="panel-head"><div><span class="panel-kicker">Priority view</span><h3>Lead temperature</h3></div></div><div aria-label="Lead priority counts and conversion" class="report-table" id="priorityPerformance"></div></article>
+</div>
+</section><section class="admin-view" data-owner-only="" id="view-settings">
+<div class="view-head">
+<div><span class="eyebrow">Website settings</span><h2>Contact &amp; social channels</h2><p>Add EZAM’s official links. The website messaging buttons update from these settings.</p></div>
+</div>
+<form class="admin-panel settings-form" id="settingsForm">
+<section class="settings-section settings-contact"><div class="settings-section-header"><span aria-hidden="true" class="settings-section-mark"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24"><path d="M4 5h16v14H4z"></path><path d="m4 7 8 6 8-6"></path></svg></span><div><span class="settings-section-kicker">CONTACT INFORMATION</span><h3>Business contact</h3><p>These details help travelers reach the EZAM team.</p></div></div><div class="settings-fields"><label><span>Business email</span><input autocomplete="email" id="settingEmail" placeholder="ezamtours@gmail.com" type="email"/></label><label><span>Contact number</span><input autocomplete="tel" id="settingPhone" placeholder="+63..." type="tel"/></label></div></section><section class="settings-section settings-social"><div class="settings-section-header"><span aria-hidden="true" class="settings-section-mark"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c-5 5-5 13 0 18M12 3c5 5 5 13 0 18"></path></svg></span><div><span class="settings-section-kicker">SOCIAL CHANNELS</span><h3>Connect with travelers</h3><p>Enter EZAM’s official profiles to show messaging links on the public website.</p></div></div><div class="settings-fields"><label><span>Facebook / Messenger URL</span><input autocomplete="url" id="settingFacebook" placeholder="https://m.me/your-page" type="url"/></label><label><span>Instagram profile URL</span><input autocomplete="url" id="settingInstagram" placeholder="https://instagram.com/your-handle" type="url"/></label><label><span>TikTok profile URL</span><input autocomplete="url" id="settingTikTok" placeholder="https://tiktok.com/@your-handle" type="url"/></label></div></section>
+<div class="settings-action-divider"></div><div class="settings-note" role="note">Social links open the relevant platforms. Messages are not automatically imported into this dashboard until the corresponding integrations and permissions are configured.</div>
+<div class="settings-submit-row"><p>Changes are saved to the current workspace configuration.</p><button class="admin-btn primary settings-save" type="submit">Save website settings</button></div>
+</form>
+</section>
+</div>
+</main>
+</div>
+<div class="admin-loading" id="adminLoading">
+<img alt="EZAM" src="assets/images/ezam-official-2026-on-light.png"/>
+<span>Checking access…</span>
+</div>
+<!-- Lead editor -->
+<div aria-hidden="true" class="admin-modal" id="leadModal">
+<div class="admin-modal-backdrop" data-close-modal="lead"></div>
+<div class="admin-modal-dialog lead-dialog">
+<button class="modal-close" data-close-modal="lead" type="button">×</button>
+<div class="modal-head"><span class="eyebrow">Lead record</span><h2 id="leadModalTitle">Traveler inquiry</h2><p id="leadCreatedMeta"></p></div>
+<form id="leadForm">
+<input id="leadId" type="hidden"/>
+<div class="form-grid three">
+<label><span>Name</span><input id="leadName" required=""/></label>
+<label><span>Email</span><input id="leadEmail" type="email"/></label>
+<label><span>Phone</span><input id="leadPhone"/></label>
+<label><span>Source</span><select id="leadSource"></select></label>
+<label><span>Stage</span><select id="leadStage"></select></label>
+<label><span>Priority</span><select id="leadTemperature"><option>Hot</option><option>Warm</option><option>Cold</option></select></label>
+<label data-owner-only=""><span>Assigned admin</span><select id="leadAssigned"><option value="">Unassigned</option></select></label>
+<label><span>Preferred contact</span><input id="leadPreferredContact" placeholder="Email / Phone / Messenger"/></label>
+<label><span>Inquiry type</span><select id="leadInquiryType"><option value="custom">Customized Travel</option><option value="package">Package</option><option value="general">General</option><option value="social">Social</option><option value="manual">Manual</option></select></label>
+<label class="full"><span>Trip / inquiry details</span><textarea id="leadTripDetails" rows="4"></textarea></label>
+<label class="full"><span>Traveler message</span><textarea id="leadMessage" rows="4"></textarea></label>
+<label class="full"><span>Internal notes</span><textarea id="leadNotes" placeholder="Private notes for EZAM staff" rows="4"></textarea></label>
+</div>
+<div class="modal-actions">
+<div class="modal-contact-actions" id="leadContactActions"></div>
+<div><button class="admin-btn danger" data-owner-only="" id="deleteLeadBtn" type="button">Delete</button> <button class="admin-btn primary" type="submit">Save lead</button></div>
+</div>
+</form>
+</div>
+</div>
+<!-- Package editor -->
+<div aria-hidden="true" class="admin-modal" id="packageModal">
+<div class="admin-modal-backdrop" data-close-modal="package"></div>
+<div class="admin-modal-dialog package-dialog">
+<button class="modal-close" data-close-modal="package" type="button">×</button>
+<div class="modal-head"><span class="eyebrow">Website package</span><h2 id="packageModalTitle">Create package</h2><p>Everything saved here feeds the public package catalog when Published is enabled.</p></div>
+<form id="packageForm">
+<input id="pkgId" type="hidden"/>
+<div class="package-form-layout">
+<div class="package-form-fields">
+<div class="form-grid two"><label><span>Package title</span><input id="pkgTitle" placeholder="Best of Japan" required=""/></label><label><span>Country / region</span><input id="pkgCountry" list="pkgCountryList" placeholder="Japan" required=""/><datalist id="pkgCountryList"><option value="Philippines"></option><option value="Japan"></option><option value="South Korea"></option><option value="Singapore"></option><option value="Indonesia"></option><option value="France"></option><option value="Switzerland"></option><option value="Thailand"></option><option value="Vietnam"></option><option value="Hong Kong"></option><option value="Taiwan"></option><option value="China"></option><option value="Australia"></option><option value="United States"></option></datalist></label><label><span>Destinations</span><input id="pkgDestination" placeholder="Tokyo · Kyoto · Osaka"/></label><label><span>Duration</span><input id="pkgDuration" placeholder="7 Days / 6 Nights"/></label><label><span>Travel dates</span><input id="pkgDates" placeholder="May 7–11, 2027 or Flexible departures"/></label><label><span>Rate</span><input id="pkgPrice" placeholder="₱51,998 or Request current rate"/></label><label class="full"><span>Summary</span><textarea id="pkgSummary" placeholder="Short description of the experience" rows="4"></textarea></label><label><span>Tags</span><input id="pkgTags" placeholder="Culture, Food, City"/></label><label><span>Country photo preset</span><select id="pkgPhotoPreset"></select></label><div class="full package-image-library-block">
+<div class="field-heading"><div><span>Country image library</span><small>Choose a suggested destination photo or upload your own.</small></div><button class="inline-reset" id="resetPackageImage" type="button">Reset image</button></div>
+<div class="package-image-choices" id="pkgImageChoices"></div>
+</div><label class="full upload-field"><span>Upload your own package image</span><input accept="image/jpeg,image/png,image/webp" id="pkgImageUpload" type="file"/><small>Recommended: landscape photo, at least 1600px wide. The preview compresses large uploads automatically.</small></label><label class="full"><span>Or use a custom image URL</span><input id="pkgImage" placeholder="https://..." type="url"/></label></div>
+<div class="check-row"><label><input checked="" id="pkgPublished" type="checkbox"/> Published</label><label><input id="pkgFeatured" type="checkbox"/> Featured</label></div>
+</div>
+<aside class="package-preview">
+<span class="eyebrow">Image preview</span>
+<div class="package-preview-image"><img alt="Package preview" id="pkgImagePreview" src="assets/images/fallback-japan.webp"/></div><div class="package-preview-status"><span id="pkgPreviewStatus">Draft preview</span><strong id="pkgPreviewCountry">Country</strong></div>
+<h3 id="pkgPreviewTitle">Package preview</h3>
+<p id="pkgPreviewMeta">Choose a photo preset or paste an image URL.</p>
+</aside>
+</div>
+<div class="modal-actions"><span></span><button class="admin-btn primary" type="submit">Save package</button></div>
+</form>
+</div>
+</div>
+<!-- Invite admin -->
+<div aria-hidden="true" class="admin-modal" id="adminInviteModal">
+<div class="admin-modal-backdrop" data-close-modal="adminInvite"></div>
+<div class="admin-modal-dialog small-dialog">
+<button class="modal-close" data-close-modal="adminInvite" type="button">×</button>
+<div class="modal-head"><span class="eyebrow">Access</span><h2>Invite an admin</h2><p>The production backend sends an invitation email. Admins see only leads assigned to their account.</p></div>
+<form id="adminInviteForm">
+<div class="form-grid">
+<label><span>Name</span><input id="inviteName" placeholder="Travel Admin" required=""/></label>
+<label><span>Email</span><input id="inviteEmail" placeholder="admin@example.com" required="" type="email"/></label>
+</div>
+<div class="modal-actions"><span></span><button class="admin-btn primary" type="submit">Send invitation</button></div>
+</form>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.119.0/dist/umd/supabase.min.js"></script>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/data-service.js"></script>
+<script src="assets/js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+/* EZAM V8.24 — restrained editorial photography, preserve original hero layout. */
+.hero-v7-slide{filter:brightness(.98) saturate(.94) contrast(1.01)!important;image-rendering:auto!important}
+.dest-card img,.path-media img,.package-img img,.journey-step-image img{filter:saturate(.96) contrast(1.01)!important;image-rendering:auto!important}
+.hero-v7-slide:nth-child(3){object-position:60% center}
+@media (max-width:800px){.hero-v7-slide:nth-child(3){object-position:55% center}}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="#082f45" name="theme-color"/>
+<title>EZAM Admin Login</title>
+<link href="assets/images/favicon.png" rel="icon" type="image/png"/>
+<link href="assets/css/admin.css" rel="stylesheet"/>
+<script id="themeInit">(function(){try{var k='ezam_admin_theme',s=localStorage.getItem(k);document.documentElement.dataset.theme=s||'light';}catch(e){document.documentElement.dataset.theme='light';}})();</script></head>
+<body class="login-page">
+<div aria-hidden="true" class="login-photo">
+<img alt="" src="assets/images/hero-hawaii-hq.webp"/>
+<div class="login-photo-overlay"></div>
+<div class="login-photo-copy">
+<span>EZAM ADMINISTRATION</span>
+<strong>Every inquiry.<br/>One clear place.</strong>
+<p>Manage packages, leads, assignments, and the customer journey from one secure workspace.</p>
+</div>
+</div>
+<main class="login-panel">
+<button aria-label="Switch appearance" class="theme-toggle login-theme-toggle" id="loginThemeToggle" title="Switch appearance" type="button">
+<span aria-hidden="true" class="theme-icon theme-icon-sun">
+<svg fill="none" viewbox="0 0 24 24">
+<circle cx="12" cy="12" r="4"></circle>
+<path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.66 6.34l1.41-1.41"></path>
+</svg>
+</span>
+<span aria-hidden="true" class="theme-icon theme-icon-moon">
+<svg fill="none" viewbox="0 0 24 24">
+<path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5 8.5 8.5 0 1 0 20.5 14.5Z"></path>
+</svg>
+</span>
+</button>
+
+<a class="login-logo" href="index.html" aria-label="Return to EZAM website"><img class="ezam-logo-on-light" alt="EZAM Tours &amp; Travel Services" src="assets/images/ezam-official-2026-on-light.png"/><img class="ezam-logo-on-dark" alt="" aria-hidden="true" src="assets/images/ezam-official-2026-on-dark.png"/></a>
+<div class="login-form-wrap">
+<div class="eyebrow">Secure workspace</div>
+<h1>Welcome back.</h1>
+<p class="login-lead">Sign in with your EZAM administrator account.</p>
+<div class="backend-notice" hidden="" id="backendNotice">
+<strong>Preview mode</strong>
+<span>A dedicated EZAM Supabase project has not been connected yet. Use a preview account below to review the interface.</span>
+</div>
+<form id="loginForm">
+<label>Email address<input autocomplete="email" id="loginEmail" placeholder="name@ezam.com" required="" type="email"/></label>
+<label>Password<input autocomplete="current-password" id="loginPassword" placeholder="••••••••••••" required="" type="password"/></label>
+<button class="admin-btn primary wide" type="submit">Sign in →</button>
+<button class="forgot-btn" id="forgotPassword" type="button">Forgot password?</button>
+<p class="login-error" id="loginError" role="alert"></p>
+</form>
+<div class="demo-login" hidden="" id="demoLogin">
+<div class="demo-divider"><span>Interface preview</span></div>
+<button class="admin-btn dark wide" data-demo-role="owner" type="button">Preview as Owner (Iza)</button>
+<button class="admin-btn ghost wide" data-demo-role="admin" type="button">Preview as Admin</button>
+</div>
+</div>
+<div class="login-footer"><a href="index.html">← Return to EZAM website</a><span>Authorized staff only.</span></div>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.119.0/dist/umd/supabase.min.js"></script>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/data-service.js"></script>
+<script src="assets/js/login.js"></script>
+</body>
+</html>

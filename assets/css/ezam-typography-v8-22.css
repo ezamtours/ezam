@@ -1,0 +1,72 @@
+/* EZAM V8.22 — typography consistency and cache-refresh patch
+   Applies to the PUBLIC WEBSITE only, not the secure admin workspace.
+   Manrope: regular 400 / medium 500 / semibold 600.
+   Display headings retain the site's original editorial serif styling.
+*/
+:root {
+  --font-body: "Manrope", "Avenir Next", "Segoe UI", Arial, sans-serif;
+}
+html body,
+html body button,
+html body input,
+html body select,
+html body textarea {
+  font-family: var(--font-body) !important;
+}
+html body { font-weight: 400 !important; }
+html body :is(p,li,dd,dt,textarea,input,select,option) {
+  font-weight: 400;
+}
+/* Medium-weight interactive text instead of the old compressed, heavy bold. */
+html body :is(
+  .navlinks, .navlinks a, .mobile-menu a,
+  .primary-btn, .secondary-btn, .outline-btn,
+  .text-link, .story-link, .path-compare a,
+  .package-inquire, .planner-search, .planner-tab,
+  .travelers-done, .planner-mini-services,
+  .social-btn, .social-btn-label,
+  .ez-reviews-bottom .primary-btn,
+  .footer-cta-actions a, .hero-actions a,
+  .inquiry-form button
+) {
+  font-family: var(--font-body) !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.005em;
+}
+html body :is(.primary-btn,.secondary-btn,.outline-btn,.planner-search,.social-btn) :is(b,strong,span) {
+  font-weight: 500 !important;
+}
+html body :is(.path-compare strong,.planner-package-link strong) {
+  font-weight: 500 !important;
+}
+html body :is(
+  .field label, .planner-v5 .trip-builder .field label,
+  .inquiry-form label, .travelers-field label
+) { font-weight: 500 !important; }
+/* Small labels and reviewer names need just enough hierarchy. */
+html body :is(
+  .eyebrow, .ez-reviews-kicker, .ez-review-category,
+  .note-kicker, .ready-badge, .path-pill, .path-label,
+  .philosophy-kicker, .philosophy-topline, .catalog-label
+) { font-family:var(--font-body) !important; font-weight: 600 !important; }
+html body .ez-reviews .ez-review-author strong {
+  font-family: var(--font-body) !important;
+  font-weight: 600 !important;
+  font-size: 14px;
+  letter-spacing: -0.012em;
+}
+html body .ez-reviews .ez-review-details > summary {
+  font-family: var(--font-body) !important;
+  font-weight: 500 !important;
+  font-size: 13px;
+}
+/* Reclaim serif editorial headings without touching the decorative script text. */
+html body :is(
+  .serif, .hero-v7-title, .hero-v7-subtitle,
+  .section-head h2, .path-body h3,
+  .about-copy h2, .planner-heading h3,
+  .stories h2, .ez-reviews-title,
+  .footer-cta h2, .social-connect strong
+) { font-family: var(--font-display, Georgia, serif) !important; }
+/* Preserve accessibility and avoid faux bold when the web font is unavailable. */
+html { font-synthesis: none; }
