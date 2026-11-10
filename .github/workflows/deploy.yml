@@ -1,0 +1,62 @@
+name: Deploy EZAM Complete Website to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: ezam-pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+      - name: Assemble production website
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p _site
+          cp index.html admin-login.html owner.html 404.html photo-credits.html site.webmanifest robots.txt _site/
+          touch _site/.nojekyll
+          cp -R assets _site/assets
+          test -f _site/index.html
+          test -f _site/admin-login.html
+          test -f _site/owner.html
+          test -f _site/assets/js/config.js
+          test -s _site/assets/css/styles.css
+          test -s _site/assets/css/ezam-typography-v8-22.css
+          test -s _site/assets/css/ezam-photo-refinement-v8-24.css
+          test -s _site/assets/images/ezam-official-2026-on-light.png
+          test -s _site/assets/images/journey-choose-v2.webp
+          test -s _site/assets/images/ezam-review-raymond.webp
+      - name: Fetch and verify authentic 3200px hero photos
+        run: |
+          python3 scripts/fetch_hq_heroes.py --output-dir _site/assets/images
+          for place in philippines japan south-korea singapore bali; do
+            test -s "_site/assets/images/hero-${place}-real-3200.jpg"
+          done
+      - name: Upload site artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Publish website
+        id: deployment
+        uses: actions/deploy-pages@v4
