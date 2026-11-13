@@ -1,0 +1,8 @@
+EZAM V8.29 dashboard deployment — checksums
+9351fc8fab0a3f55ddbd178af00774b2e364acc033222c4a7a4dd90c27fb9b48  owner.html
+9487811ba04860d3f08a296ecbf242c3ec584d8969f6c2f6d8ed6d0bf380fe45  admin-login.html
+f9cafe79048345a16c8f44eece71c0aaa6d8a3b6683c65f4bbdfd89ce0dfe51b  assets/js/admin.js
+7249e16b56676c51c085a1de358629ee68f887ad44cdc472e7c85ecbe1ae579c  assets/js/dashboard-v8-29.js
+ae99fdebc79782d9be9a337be2f7f2500ec252a3bc62120a824ecc963af9b062  assets/css/ezam-dashboard-v8-29.css
+9ac62c8efa716a962296ddb499cd8bfe15bf8bacda0a5087283e3dff14abc275  assets/css/ezam-hero-polish-v8-25.css
+c092d7b4156604cae3be3b3eadfdec632410bd80898a2c886a16c28f8191cdf0  assets/images/hero-philippines.webp
