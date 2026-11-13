@@ -85,6 +85,7 @@
   }
 
   function switchView(name){
+    if(name==="leads")window.EZAMLeadQuickFilter=null;
     if(!isOwner() && ["packages","admins","reports","settings"].includes(name)) name="overview";
     const perform=()=>{
       $$(".admin-view").forEach(v=>v.classList.toggle("active",v.id===`view-${name}`));
@@ -98,7 +99,8 @@
         followups:["Follow-ups","CRM / Priority Desk"],
         bookings:["Bookings","Operations / Converted Inquiries"],
         travelers:["Travelers","CRM / Contact Directory"],
-        settings:["Website Settings","Contact & Social Channels"]
+        settings:["Website Settings","Contact & Social Channels"],
+        profile:["My Profile","Account & Preferences"]
       };
       $("#viewTitle").textContent=labels[name]?.[0]||"Overview";
       $("#topbarKicker").textContent=labels[name]?.[1]||"EZAM Workspace";
@@ -115,6 +117,7 @@
     if(["followups","bookings","travelers"].includes(name)) renderOperations(name);
     if(name==="settings") renderSettings();
     if(name==="overview") renderOverview();
+    window.dispatchEvent(new CustomEvent("ezam:view-changed",{detail:{view:name}}));
     const activeView=document.querySelector(`#view-${name}`);
     if(activeView && !matchMedia("(prefers-reduced-motion: reduce)").matches){
       activeView.classList.remove("ezam-v12-enter");
@@ -190,12 +193,16 @@ $("#logoutBtn")?.addEventListener("click",performLogout);
       EZAMData.getSettings()
     ];
     const results=await Promise.allSettled(tasks);
-    leads=results[0].status==="fulfilled"?results[0].value:[];
-    admins=results[1].status==="fulfilled"?results[1].value:[];
-    packages=results[2].status==="fulfilled"?results[2].value:[];
-    settings=results[3].status==="fulfilled"?results[3].value:{};
+    // Keep last-known figures on partial network failures instead of falsely showing zero leads.
+    if(results[0].status==="fulfilled")leads=results[0].value;
+    if(results[1].status==="fulfilled")admins=results[1].value;
+    if(results[2].status==="fulfilled")packages=results[2].value;
+    if(results[3].status==="fulfilled")settings=results[3].value;
+    const errors=results.map((r,i)=>r.status==="rejected"?{area:["leads","admins","packages","settings"][i],message:String(r.reason?.message||"Network error")}:null).filter(Boolean);
     $("#navLeadCount").textContent=leads.filter(l=>l.stage==="New").length||leads.length;
     renderOverview();
+    window.dispatchEvent(new CustomEvent("ezam:data-refreshed",{detail:{ok:errors.length===0,errors}}));
+    return {ok:errors.length===0,errors};
   }
 
   /* -------- Overview -------- */
@@ -335,7 +342,17 @@ $("#logoutBtn")?.addEventListener("click",performLogout);
     const temp=$("#temperatureFilter")?.value||"";
     const source=$("#sourceFilter")?.value||"";
     const assignee=$("#assigneeFilter")?.value||"";
+    const quick=window.EZAMLeadQuickFilter||null;
     return leads.filter(l=>{
+      const stamp=Date.parse(l.created_at||"");
+      const age=Number.isFinite(stamp)?Math.max(0,Date.now()-stamp):null;
+      const open=!(["Booked","Closed","Lost"].includes(l.stage||"New"));
+      const quickOK=!quick ||
+        (quick==="new24" && l.stage==="New" && age!==null && age<=24*3600000) ||
+        (quick==="review48" && ["New","Follow-up"].includes(l.stage||"New") && age!==null && age>48*3600000) ||
+        (quick==="hotOpen" && open && l.temperature==="Hot") ||
+        (quick==="unassignedOpen" && open && !l.assigned_to);
+      if(!quickOK)return false;
       const hay=[l.name,l.email,l.phone,l.trip_details,l.message,l.owner_notes,l.destination].join(" ").toLowerCase();
       return (!q||hay.includes(q))
         &&(!stage||l.stage===stage)
@@ -365,6 +382,13 @@ $("#logoutBtn")?.addEventListener("click",performLogout);
     $("#leadScopeText").textContent=isOwner()
       ?"All website, package, social, referral, phone, and manually entered leads."
       :"Only inquiries assigned to your administrator account are visible.";
+    const quick=window.EZAMLeadQuickFilter||null;
+    const notice=$("#ezamQuickFilterNotice");
+    if(notice){
+      notice.hidden=!quick;
+      const labels={new24:"New inquiries from the last 24 hours",review48:"New or follow-up inquiries older than 48 hours",hotOpen:"Hot leads that are still open",unassignedOpen:"Open leads awaiting assignment"};
+      if(quick)$("#ezamQuickFilterLabel").textContent=labels[quick]||"Priority-filtered records";
+    }
     const table=$("#leadTable");
     const rows=filteredLeads();
     table.innerHTML=rows.length?rows.map(leadRow).join(""):'<div class="empty-state">No leads match these filters.</div>';
@@ -374,6 +398,8 @@ $("#logoutBtn")?.addEventListener("click",performLogout);
 
   ["leadSearch"].forEach(id=>$("#"+id)?.addEventListener("input",renderLeads));
   ["stageFilter","temperatureFilter","sourceFilter","assigneeFilter"].forEach(id=>$("#"+id)?.addEventListener("change",renderLeads));
+  $("#ezamClearQuickFilter")?.addEventListener("click",()=>{window.EZAMLeadQuickFilter=null;renderLeads()});
+  ["stageFilter","temperatureFilter","sourceFilter","assigneeFilter"].forEach(id=>$("#"+id)?.addEventListener("change",()=>{if(window.EZAMLeadQuickFilter){window.EZAMLeadQuickFilter=null;renderLeads()}}));
 
   const leadModal=$("#leadModal");
   function openModal(el){el.classList.add("open");el.setAttribute("aria-hidden","false");document.body.style.overflow="hidden";}
@@ -457,7 +483,7 @@ $("#logoutBtn")?.addEventListener("click",performLogout);
         }
       }
       closeModal(leadModal);
-      await refreshData(); renderLeads();
+  await refreshData(); renderLeads();
       const currentOp=location.hash.slice(1);if(["followups","bookings","travelers"].includes(currentOp))renderOperations(currentOp);
     }catch(err){alert(err.message||"Lead could not be saved.");}
   });
@@ -992,6 +1018,32 @@ $("#logoutBtn")?.addEventListener("click",performLogout);
   document.addEventListener("visibilitychange",()=>{if(!document.hidden)renderWorldClocks();});
   window.addEventListener("pagehide",()=>clearInterval(clockRefreshTimer),{once:true});
 
+  // Limited interface hooks for the owner command center; access still governed by Supabase RLS.
+  window.EZAMDashboard={
+    snapshot:()=>({profile,leads:leads.slice(),admins:admins.slice(),packages:packages.slice()}),
+    showView:switchView,
+    async refresh(){
+      const result=await refreshData();
+      if(!result.ok)throw new Error(result.errors.map(e=>e.area).join(", ")+" data unavailable");
+      const active=document.querySelector(".admin-view.active")?.id?.replace("view-","");
+      if(active==="leads")renderLeads();
+      if(active==="packages")renderPackages();
+      if(active==="reports")renderReports();
+      if(["followups","bookings","travelers"].includes(active))renderOperations(active);
+    },
+    openLead(id){openLead(id)},
+    openLeads(filters={}){
+      switchView("leads");
+      window.EZAMLeadQuickFilter=filters.quick||null;
+      ["stageFilter","temperatureFilter","sourceFilter","assigneeFilter"].forEach(id=>{const el=document.getElementById(id);if(el)el.value=""});
+      if(filters.stage && document.getElementById("stageFilter"))document.getElementById("stageFilter").value=filters.stage;
+      if(filters.temperature && document.getElementById("temperatureFilter"))document.getElementById("temperatureFilter").value=filters.temperature;
+      if(filters.assignee && document.getElementById("assigneeFilter"))document.getElementById("assigneeFilter").value=filters.assignee;
+      renderLeads();
+    }
+  };
+
+
   /* -------- Init / Realtime -------- */
   if(!(await guard())) return;
 
@@ -1001,7 +1053,7 @@ $("#logoutBtn")?.addEventListener("click",performLogout);
   setOwnerVisibility();
 
   const hash=location.hash.replace("#","");
-  switchView(["overview","leads","followups","bookings","travelers","packages","admins","reports","settings"].includes(hash)?hash:"overview");
+  switchView(["overview","leads","followups","bookings","travelers","packages","admins","reports","settings","profile"].includes(hash)?hash:"overview");
 
   $("#navLeadCount").textContent=leads.filter(l=>l.stage==="New").length;
 
