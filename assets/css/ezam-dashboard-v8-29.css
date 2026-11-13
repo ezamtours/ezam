@@ -1,0 +1,237 @@
+/* EZAM V8.29 — scoped owner-workspace enhancements.
+   Loaded AFTER legacy inline CSS to correct branding, metrics and layout without re-skinning the public website. */
+
+/* 1. Official logo. Always contain the complete official artwork: no zoom, clipping or transforms. */
+.admin-page .admin-sidebar > .admin-brand {
+  position:relative!important;display:flex!important;flex-direction:column!important;
+  align-items:center!important;justify-content:center!important;
+  box-sizing:border-box!important;min-height:112px!important;height:auto!important;
+  width:calc(100% - 8px)!important;margin:3px 4px 18px!important;
+  padding:15px 12px 11px!important;overflow:visible!important;
+  background:#ffffff!important;border:1px solid #dce7e6!important;
+  border-radius:15px!important;box-shadow:0 6px 18px rgba(0,0,0,.08)!important;
+}
+.admin-page .admin-sidebar > .admin-brand:after {display:none!important}
+.admin-page .admin-sidebar > .admin-brand img {
+  display:block!important;position:static!important;flex:0 0 auto!important;
+  width:100%!important;max-width:206px!important;height:66px!important;max-height:66px!important;
+  margin:0 auto!important;padding:0!important;transform:none!important;
+  object-fit:contain!important;object-position:center center!important;
+  filter:none!important;clip-path:none!important;
+}
+.admin-page .admin-sidebar > .admin-brand .admin-brand-tag {
+  display:block!important;position:static!important;margin:5px 0 0!important;
+  color:#385267!important;font-size:.57rem!important;line-height:1.3!important;
+  font-weight:600!important;letter-spacing:.085em!important;text-align:center!important;
+}
+.admin-page .mobile-topbar-logo img, .admin-page .admin-loading img {
+  transform:none!important;object-fit:contain!important;object-position:center!important;
+}
+/* Login logo must remain readable even in dark mode. Use the navy official artwork on a light card. */
+.login-page .login-logo,html[data-theme="dark"] .login-page .login-logo {
+  position:relative!important;display:flex!important;align-items:center!important;justify-content:center!important;
+  width:248px!important;height:108px!important;min-height:108px!important;
+  padding:12px 16px!important;margin:0!important;
+  overflow:visible!important;background:#ffffff!important;border:1px solid #d9e6e5!important;
+  border-radius:16px!important;box-shadow:0 12px 30px rgba(0,0,0,.1)!important;
+}
+.login-page .login-logo:after {height:3px!important;left:16px!important;right:16px!important}
+.login-page .login-logo img.ezam-logo-on-light,
+html[data-theme="dark"] .login-page .login-logo img.ezam-logo-on-light {
+  display:block!important;position:static!important;
+  flex:0 0 auto!important;min-width:0!important;width:100%!important;max-width:100%!important;
+  height:78px!important;max-height:78px!important;margin:0!important;
+  padding:0!important;transform:none!important;object-fit:contain!important;
+  object-position:center!important;filter:none!important;clip-path:none!important;
+}
+.login-page .login-logo img.ezam-logo-on-dark,
+html[data-theme="dark"] .login-page .login-logo img.ezam-logo-on-dark{display:none!important}
+
+/* 2. Four package metrics: correct alignment and one consistent Lucide-style icon language. */
+#view-packages .mock-summary-strip > div {
+  display:grid!important;grid-template-columns:48px minmax(0,1fr)!important;
+  grid-template-rows:auto auto!important;column-gap:14px!important;row-gap:4px!important;
+  align-content:center!important;align-items:center!important;min-width:0!important;
+  min-height:109px!important;padding:18px!important;
+}
+#view-packages .mock-summary-strip .summary-icon {
+  display:grid!important;place-items:center!important;position:static!important;
+  grid-column:1!important;grid-row:1/3!important;
+  width:48px!important;height:48px!important;min-width:48px!important;min-height:48px!important;
+  margin:0!important;border-radius:13px!important;transform:none!important;
+}
+#view-packages .mock-summary-strip .summary-icon svg.ezam-stat-icon{
+  display:block!important;width:24px!important;height:24px!important;
+  fill:none!important;stroke:currentColor!important;stroke-width:1.9!important;
+  stroke-linecap:round!important;stroke-linejoin:round!important;
+  opacity:1!important;transform:none!important;
+}
+#view-packages .mock-summary-strip .summary-icon.blue{background:rgba(65,148,204,.2)!important;color:#78c7f5!important}
+#view-packages .mock-summary-strip .summary-icon.green{background:rgba(26,167,111,.2)!important;color:#69dfa9!important}
+#view-packages .mock-summary-strip .summary-icon.slate{background:rgba(149,174,191,.16)!important;color:#b9cddc!important}
+#view-packages .mock-summary-strip .summary-icon.gold{background:rgba(238,179,62,.19)!important;color:#ffce77!important}
+#view-packages .mock-summary-strip > div > small {
+  display:block!important;grid-column:2!important;grid-row:1!important;
+  align-self:end!important;margin:0!important;line-height:1.35!important;
+}
+#view-packages .mock-summary-strip > div > strong {
+  display:block!important;grid-column:2!important;grid-row:2!important;
+  align-self:start!important;margin:0!important;line-height:1.12!important;
+}
+
+/* 3. World clocks stretch across available screen space rather than ending prematurely. */
+.admin-page .ezam-clocks-scroll{width:100%!important;max-width:100%!important;overflow:visible!important;padding:0!important}
+.admin-page .ezam-clocks-track{
+  display:grid!important;width:100%!important;max-width:100%!important;min-width:0!important;
+  grid-template-columns:repeat(8,minmax(0,1fr))!important;gap:10px!important;
+}
+.admin-page .ezam-clock-card{
+  box-sizing:border-box!important;min-width:0!important;width:100%!important;
+  max-width:none!important;flex:auto!important;padding:13px!important;
+}
+.admin-page .ezam-clock-face time {font-size:clamp(1.03rem,1.13vw,1.27rem)!important}
+.admin-page .ezam-clock-bottom {flex-wrap:wrap!important;row-gap:3px!important}
+@media(max-width:1819px){.admin-page .ezam-clocks-track{grid-template-columns:repeat(4,minmax(0,1fr))!important}}
+@media(max-width:780px){.admin-page .ezam-clocks-track{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media(max-width:375px){.admin-page .ezam-clocks-track{grid-template-columns:1fr!important}}
+
+/* 4. The old decorative plane/path is removed from markup and disabled defensively. */
+.overview-flight-path,.overview-flight-path:before,.overview-flight-path:after{display:none!important;visibility:hidden!important}
+
+/* 5. Lead command center: real data only, never placeholder KPIs. */
+.ezam-command-center{margin:16px 0 19px;padding:20px;border:1px solid var(--ui-line,rgba(145,165,174,.2));
+  border-radius:16px;background:var(--ui-surface,#fff);color:var(--ui-ink,#092f43);box-shadow:var(--ui-shadow,0 12px 32px rgba(0,0,0,.06));}
+.ezam-command-head{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:15px}
+.ezam-kicker{display:block;font-size:.64rem;font-weight:700;letter-spacing:.11em;color:var(--ui-green,#14885f)}
+.ezam-command-head h3{margin:5px 0 2px;font-size:1.22rem;font-weight:650!important;letter-spacing:-.035em}
+.ezam-command-head p,.ezam-command-bottom p{margin:0;color:var(--ui-secondary,#667e8b);font-size:.73rem;line-height:1.5}
+.ezam-command-actions{display:flex;align-items:center;gap:13px;flex-wrap:wrap}
+.ezam-command-actions>span{font-size:.67rem;color:var(--ui-secondary,#667e8b)}
+.ezam-outline-button,.ezam-primary-button,.ezam-text-button{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:38px;
+  padding:9px 14px;border-radius:10px;cursor:pointer;font:550 .76rem/1.25 -apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif!important;
+}
+.ezam-outline-button{background:var(--ui-surface-subtle,#f1f6f7);border:1px solid var(--ui-line,#d6e2e6);color:var(--ui-ink,#18394b)}
+.ezam-outline-button:hover{border-color:#f47a24}
+.ezam-outline-button svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ezam-primary-button{background:#f47a24;border:1px solid #f47a24;color:white!important}
+.ezam-primary-button:hover{background:#df681a}
+.ezam-text-button{background:transparent;color:#e47726;border:0;padding:6px 0;min-height:30px}
+.ezam-command-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.ezam-command-stat{display:flex;min-width:0;flex-direction:column;align-items:flex-start;text-align:left;padding:15px;
+  background:var(--ui-surface-subtle,#f6f8f9);border:1px solid var(--ui-line,#dbe4e5);border-radius:12px;
+  color:var(--ui-ink,#17394c);cursor:pointer;transition:background .2s,border-color .2s}
+.ezam-command-stat:hover{border-color:#f47a24;background:var(--ui-surface-hover,#edf5f6)}
+.ezam-command-stat span{font-size:.71rem;font-weight:600}
+.ezam-command-stat strong{font-size:1.8rem!important;letter-spacing:-.04em;font-weight:680!important;line-height:1.5}
+.ezam-command-stat small{font-size:.65rem;color:var(--ui-secondary,#71848d);line-height:1.45}
+.ezam-command-bottom{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:20px 0 9px}
+.ezam-command-bottom h4{margin:0 0 3px;font-size:.92rem;font-weight:650}
+.ezam-lead-queue{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.ezam-queue-item{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:12px;
+  padding:12px 14px;border:1px solid var(--ui-line,#dbe4e5);border-radius:10px;background:var(--ui-surface-subtle,#f8fafb);color:var(--ui-ink,#17394c);text-align:left;cursor:pointer}
+.ezam-queue-item:hover{border-color:#f47a24}
+.ezam-queue-item strong{display:block;font-size:.78rem;font-weight:620;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ezam-queue-item small{display:block;font-size:.67rem;color:var(--ui-secondary,#71848d);margin-top:4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ezam-queue-label{white-space:nowrap;font-size:.62rem;border:1px solid var(--ui-line,#dbe4e5);border-radius:999px;padding:6px 8px;color:var(--ui-secondary,#71848d)}
+.ezam-queue-label.hot{color:#c9582c;border-color:#e0a892}
+.ezam-queue-label.review{color:#bc6b28;border-color:#dbb68a}
+.ezam-queue-empty{grid-column:1/-1;padding:21px 15px;border:1px dashed var(--ui-line,#dbe4e5);border-radius:11px;font-size:.76rem;color:var(--ui-secondary,#71848d);text-align:center}
+
+/* 6. Profile & preferences — personalized per browser with actual Supabase account actions. */
+.ezam-profile-view{padding-top:26px}
+.ezam-preference-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;align-items:stretch;margin-bottom:28px}
+.ezam-setting-card{min-width:0;padding:23px;border-radius:16px;border:1px solid var(--ui-line,#d7e3e5);
+  background:var(--ui-surface,#fff);color:var(--ui-ink,#082f45);box-shadow:var(--ui-shadow,0 10px 24px rgba(0,0,0,.04))}
+.ezam-setting-head{display:flex;align-items:center;gap:12px;margin-bottom:23px}
+.ezam-preference-icon{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;flex-shrink:0;
+  color:#f47a24;background:var(--ui-surface-subtle,#f4f8f9);border:1px solid var(--ui-line,#dae5e6)}
+.ezam-preference-icon svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ezam-setting-head h3{margin:0;font-size:1rem;font-weight:650!important}
+.ezam-setting-head p{margin:3px 0 0;color:var(--ui-secondary,#687b86);font-size:.72rem;line-height:1.45}
+.ezam-form-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
+.ezam-form-fields label{display:grid;gap:8px;min-width:0;font-size:.69rem;font-weight:550}
+.ezam-form-fields label:first-child{grid-column:1/-1}
+.ezam-form-fields input{box-sizing:border-box;min-width:0;width:100%;height:43px;padding:10px 12px;border-radius:10px;
+  background:var(--ui-surface-subtle,#f7f9fa);color:var(--ui-ink,#14394a);
+  border:1px solid var(--ui-line,#dae5e6);font-size:.78rem!important;outline:0}
+.ezam-form-fields input:focus{border-color:#f47a24;box-shadow:0 0 0 3px rgba(244,122,36,.09)}
+.ezam-form-fields input[readonly]{opacity:.76;cursor:default}
+.ezam-hint{margin:13px 0 0;color:var(--ui-secondary,#687b86);font-size:.7rem;line-height:1.5}
+.ezam-setting-actions{display:flex;align-items:center;gap:13px;flex-wrap:wrap;margin-top:17px;min-height:37px}
+.ezam-setting-actions>span{font-size:.7rem;color:var(--ui-secondary,#687b86)}
+.ezam-setting-actions .is-error{color:#d15146!important}
+.ezam-setting-actions .is-ok{color:#2b9c72!important}
+.ezam-preference-fieldset{margin:0 0 18px;padding:0;border:0;min-width:0}
+.ezam-preference-fieldset legend{font-size:.7rem;font-weight:580;color:var(--ui-ink,#082f45);margin:0 0 9px}
+.ezam-segmented{display:flex;align-items:center;gap:3px;max-width:100%;padding:4px;border-radius:11px;
+  background:var(--ui-surface-subtle,#f1f6f7);border:1px solid var(--ui-line,#dae5e6)}
+.ezam-segmented button{flex:1;min-width:0;border:0;background:transparent;color:var(--ui-secondary,#687b86);
+  border-radius:8px;padding:9px 6px;font-size:.7rem!important;font-weight:560!important;cursor:pointer;white-space:nowrap}
+.ezam-segmented button[aria-pressed="true"]{background:var(--ui-surface,#fff);color:var(--ui-ink,#082f45);box-shadow:0 2px 8px rgba(0,0,0,.1)}
+.ezam-switch-row{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:6px 0 12px;cursor:pointer}
+.ezam-switch-row strong{display:block;font-size:.75rem;font-weight:600}.ezam-switch-row small{display:block;margin-top:4px;font-size:.68rem;color:var(--ui-secondary,#687b86);line-height:1.4}
+.ezam-switch-row input{appearance:none;position:relative;flex:0 0 42px;width:42px;height:24px;border-radius:20px;background:#9eb0b9;cursor:pointer;transition:background .2s}
+.ezam-switch-row input:checked{background:#0b9e70}.ezam-switch-row input:before{content:"";position:absolute;top:3px;left:3px;width:18px;height:18px;background:white;border-radius:50%;transition:transform .2s}
+.ezam-switch-row input:checked:before{transform:translateX(18px)}
+.ezam-workspace-facts{margin:0 0 14px}.ezam-workspace-facts div{display:flex;justify-content:space-between;gap:15px;padding:10px 0;border-bottom:1px solid var(--ui-line,#dae5e6)}
+.ezam-workspace-facts dt{font-size:.72rem;color:var(--ui-secondary,#687b86)}.ezam-workspace-facts dd{margin:0;text-align:right;font-size:.73rem;font-weight:570;overflow-wrap:anywhere}
+.ezam-security-card .ezam-form-fields label:first-child{grid-column:auto}
+
+/* 7. Size/density settings: calibrated to legacy selectors with high specificity. */
+html[data-density="compact"] .admin-page :is(.admin-content,.mock-panel-head,.report-table){padding-top:11px!important;padding-bottom:11px!important}
+html[data-density="compact"] .admin-page :is(.mock-kpi,.ezam-setting-card,.ezam-command-center,.admin-panel,.secondary-card){padding:12px!important;min-height:0!important}
+html[data-density="compact"] .admin-page :is(.ezam-clock-card,.mock-summary-strip>div,.mock-package-card .package-admin-body){padding:10px!important;min-height:0!important}
+html[data-density="compact"] .admin-page :is(.mock-kpi-grid,.mock-overview-grid,.overview-secondary,.ezam-command-stats,.ezam-preference-grid,.ezam-clocks-track){gap:7px!important}
+html[data-density="compact"] .admin-page .ezam-clock-face time{font-size:1.05rem!important}
+html[data-density="comfortable"] .admin-page :is(.mock-kpi,.ezam-setting-card,.ezam-command-center,.admin-panel,.secondary-card){padding:25px!important}
+html[data-density="comfortable"] .admin-page :is(.ezam-clock-card,.mock-summary-strip>div,.mock-package-card .package-admin-body){padding:18px!important}
+html[data-density="comfortable"] .admin-page :is(.mock-kpi-grid,.mock-overview-grid,.overview-secondary,.ezam-command-stats,.ezam-preference-grid,.ezam-clocks-track){gap:17px!important}
+html[data-density="comfortable"] .admin-page .ezam-clock-card{min-height:154px!important}
+html[data-density="comfortable"] .admin-page .ezam-command-stat{padding:20px!important}
+html[data-text-size="large"] .admin-page :is(.nav-icon,.ezam-command-head p,.ezam-command-stat span,.ezam-command-stat small,.ezam-queue-item small,.ezam-setting-head p,.ezam-form-fields label,.ezam-hint,.ezam-segmented button,.ezam-switch-row small,.ezam-workspace-facts dt,.ezam-workspace-facts dd,.ezam-clock-country,.ezam-clock-bottom,.mock-kpi span,.recent-lead small,.stage-chip){font-size:.83rem!important}
+html[data-text-size="large"] .admin-page :is(.admin-nav button,.mock-action,.lead-row,.ezam-clock-city,.ezam-queue-item strong,.ezam-switch-row strong){font-size:.92rem!important}
+html[data-text-size="large"] .admin-page :is(.ezam-setting-head h3,.ezam-command-head h3){font-size:1.16rem!important}
+
+/* Navigation stays operable when more workspaces are present. */
+.admin-page .admin-nav button[data-view="profile"] .nav-icon svg{fill:none!important}
+@media(min-width:981px) and (max-width:1190px){
+  .admin-page .admin-sidebar>.admin-brand{width:64px!important;min-height:66px!important;height:66px!important;margin:4px auto 16px!important;padding:6px!important}
+  .admin-page .admin-sidebar>.admin-brand img{height:41px!important;max-height:41px!important}
+  .admin-page .admin-sidebar>.admin-brand .admin-brand-tag{display:none!important}
+}
+@media(max-width:980px){
+  .admin-page .admin-sidebar>.admin-brand{display:none!important}
+  .admin-page .admin-nav{display:flex!important;flex-wrap:nowrap!important;overflow-x:auto!important;overflow-y:hidden!important;align-items:stretch!important;gap:3px!important;scrollbar-width:none!important;padding:0 5px!important}
+  .admin-page .admin-nav::-webkit-scrollbar{display:none!important}
+  .admin-page .admin-nav button{flex:0 0 76px!important;min-width:76px!important;max-width:76px!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:4px!important;padding:6px 3px!important}
+  .admin-page .admin-nav button .nav-icon{display:grid!important;place-items:center!important;width:20px!important;height:20px!important}
+  .admin-page .admin-nav button>span:last-of-type{display:block!important;max-width:72px!important;font-size:.54rem!important;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .admin-page .nav-count{position:absolute!important;right:1px!important;top:1px!important}
+}
+@media(max-width:1100px){.ezam-command-stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:750px){
+  .ezam-command-center{padding:14px!important}.ezam-command-head{flex-direction:column;align-items:flex-start}
+  .ezam-command-bottom{flex-direction:column;align-items:flex-start}
+  .ezam-lead-queue,.ezam-preference-grid{grid-template-columns:1fr}
+  .ezam-setting-card{padding:17px}
+  .ezam-form-fields{grid-template-columns:1fr}
+  .ezam-security-card .ezam-form-fields label:first-child{grid-column:1/-1}
+}
+@media(max-width:490px){
+  .ezam-command-stats{gap:7px}.ezam-command-stat{padding:11px}.ezam-command-stat strong{font-size:1.45rem!important}
+  .ezam-form-fields{grid-template-columns:1fr}
+  .ezam-workspace-facts div{flex-direction:column;gap:3px}.ezam-workspace-facts dd{text-align:left}
+  #view-packages .mock-summary-strip>div{grid-template-columns:35px minmax(0,1fr)!important;column-gap:7px!important;padding:9px!important}
+  #view-packages .mock-summary-strip .summary-icon{width:33px!important;height:33px!important;min-width:33px!important;min-height:33px!important}
+  #view-packages .mock-summary-strip .summary-icon svg.ezam-stat-icon{width:18px!important;height:18px!important}
+  #view-packages .mock-summary-strip>div>small{font-size:.64rem!important}
+}
+@media(prefers-reduced-motion:reduce){.ezam-command-stat,.ezam-queue-item,.ezam-switch-row input{transition:none!important}}
+
+/* Exact, removable owner priority filter on the existing lead database. */
+.admin-page .ezam-quick-filter:not([hidden]){display:flex!important;justify-content:space-between;align-items:center;gap:12px;
+  margin:0 0 12px;padding:11px 14px;background:var(--ui-surface-subtle,#f6f9fa);color:var(--ui-ink,#082f45);
+  border:1px solid var(--ui-line,#dbe5e7);border-left:3px solid #f47a24;border-radius:10px;font-size:.78rem}
+.admin-page .ezam-quick-filter button{background:transparent;border:0;color:#f47a24;font-size:.73rem;cursor:pointer;white-space:nowrap}
+@media(max-width:540px){.admin-page .ezam-quick-filter:not([hidden]){flex-direction:column;align-items:flex-start}}

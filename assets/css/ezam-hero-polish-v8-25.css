@@ -1,0 +1,58 @@
+/* EZAM V8.25 — focused editorial refinements; loads LAST. */
+/* E / Z / A / M: each word-pair must form a distinct line without accidental wrapping. */
+.hero-v7 .hero-v825-title {
+  font-size:clamp(3.65rem,5.55vw,6.45rem)!important;
+  line-height:.88!important;
+  letter-spacing:-.052em!important;
+  text-wrap:nowrap!important;
+  max-width:min(100%, 860px);
+}
+.hero-v7 .hero-v825-title .hero-v7-title-line {
+  display:block!important;
+  width:max-content!important;
+  max-width:100%!important;
+  white-space:nowrap!important;
+}
+.hero-v7 .hero-v825-title .hero-v7-title-line:nth-child(1){animation-delay:.08s}
+.hero-v7 .hero-v825-title .hero-v7-title-line:nth-child(2){animation-delay:.19s}
+.hero-v7 .hero-v825-title .hero-v7-title-line:nth-child(3){animation-delay:.30s}
+.hero-v7 .hero-v825-title .hero-v7-title-line:nth-child(4){animation-delay:.41s}
+/* Let authentic photographs be clear on the right while retaining a dark readable left side. */
+.hero-v7 .hero-v7-overlay{
+ background:linear-gradient(90deg,rgba(3,31,45,.90) 0%,rgba(3,31,45,.72) 37%,rgba(3,31,45,.29) 69%,rgba(3,31,45,.09) 100%),
+ linear-gradient(180deg,rgba(3,31,45,.05) 0%,rgba(3,31,45,.16) 100%)!important;
+}
+.hero-v7 .hero-v7-slide{filter:saturate(.97) contrast(1.035) brightness(.98)!important;image-rendering:auto!important}
+.hero-v7 .hero-v7-inner {min-height:clamp(780px,90svh,970px)!important}
+/* One intentional brand signature: remove the duplicate logo from the contact card. */
+.footer-cta .contact-primary{
+ grid-template-columns:minmax(0,1fr)!important;
+ grid-template-areas:"brand" "copy" "actions"!important;
+ align-content:center!important;
+ row-gap:13px!important;
+ padding:clamp(28px,4.25vw,54px)!important;
+}
+.footer-cta .contact-brand-lockup--label-only {display:block!important;width:auto!important;margin:0!important;grid-area:brand!important}
+.footer-cta .contact-brand-lockup--label-only span{
+ font-family:var(--font-body,Manrope,sans-serif)!important;
+ font-size:.75rem!important;letter-spacing:.18em!important;font-weight:600!important;
+}
+.footer-cta .contact-primary .contact-copy{grid-area:copy}
+.footer-cta .contact-primary .footer-cta-actions{grid-area:actions;margin-top:11px}
+.footer-cta .contact-primary .contact-copy h2{font-size:clamp(2.15rem,4.15vw,4rem)!important;max-width:18ch}
+.footer-cta .contact-primary .contact-copy p{max-width:60ch!important}
+@media(max-width:1100px){
+ .hero-v7 .hero-v825-title{font-size:clamp(3.35rem,6.5vw,5.3rem)!important}
+ .hero-v7 .hero-v7-inner{padding-top:100px!important;padding-bottom:160px!important}
+}
+@media(max-width:760px){
+ .hero-v7 .hero-v825-title{font-size:clamp(2.45rem,10.6vw,4.25rem)!important;line-height:.91!important;letter-spacing:-.045em!important}
+ .hero-v7 .hero-v7-inner{min-height:790px!important;padding:106px 20px 138px!important}
+ .hero-v7 .hero-v7-overlay{background:linear-gradient(180deg,rgba(3,31,45,.20) 0%,rgba(3,31,45,.49) 33%,rgba(3,31,45,.84) 78%,rgba(3,31,45,.92) 100%)!important}
+ .footer-cta .contact-primary{grid-template-columns:minmax(0,1fr)!important;grid-template-areas:"brand" "copy" "actions"!important;gap:15px!important}
+}
+@media(max-width:390px){
+ .hero-v7 .hero-v825-title{font-size:clamp(2.1rem,10.5vw,2.9rem)!important;letter-spacing:-.055em!important}
+ .hero-v7 .hero-v7-inner{min-height:780px!important;padding-inline:16px!important}
+}
+@media(prefers-reduced-motion:reduce){.hero-v7 .hero-v825-title .hero-v7-title-line{animation:none!important;opacity:1!important;transform:none!important;clip-path:none!important}}
